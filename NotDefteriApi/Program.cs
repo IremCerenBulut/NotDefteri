@@ -4,6 +4,7 @@ global using NotDefteriApi.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors();
 builder.Services.AddDbContext<UygulamaDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("UygulamaDbContext")));
 
 builder.Services.AddControllers();
@@ -21,6 +22,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(p => p.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 
 app.UseAuthorization();
 

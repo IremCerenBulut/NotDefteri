@@ -75,6 +75,7 @@ namespace NotDefteriApi.Controllers
             return BadRequest(ModelState);
 
         }
+        
         [HttpDelete("{id}")]
 
         public async Task<IActionResult> DeleteNot(int id)
